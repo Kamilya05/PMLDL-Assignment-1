@@ -13,8 +13,7 @@ PMLDL-Assignment-1
 │   │   └── docker-compose.yml
 │   └── models
 │   │   └── train_model.py
-├── models (trained model files)
-└── data
+└── models (trained model files)
 ```
 
 

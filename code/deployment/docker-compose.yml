@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: . 
+      dockerfile: api/Dockerfile
+    container_name: titanic-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - D:/Programs/PMLDL-Assig-1-titanic/models:/app/models
+    networks:
+      - titanic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: titanic-app
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    networks:
+      - titanic-network
+    environment:
+      - API_URL=http://api:8000
+
+networks:
+  titanic-network:
+    driver: bridge

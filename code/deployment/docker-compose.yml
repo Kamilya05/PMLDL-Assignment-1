@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - D:/Programs/PMLDL-Assig-1-titanic/models:/app/models
+      - D:/Programs/PMLDL-Assignment-1/models:/app/models
     networks:
       - titanic-network
     healthcheck:
